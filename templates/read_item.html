@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block required_files %}
+    <link rel="stylesheet" href="{{url_for('static',filename='item.css')}}">
+
+{% endblock %}
+
+{% block main %}
+<div class="item">
+    {% if category_has_item %}
+        <h2>{{item.name}}:</h2>
+        <p>{{item.description}}</p>
+        <p>category: {{ category.name }}</p>
+        {% if authorized %}
+            <p><a href="{{url_for('update_item', cid=item.category_id, iid=item.id )}}">Edit</a> |
+                <a id="delete" href="{{url_for('delete_item', cid=item.category_id, iid=item.id )}}">Delete</a></p>
+        {% endif %}
+    {% else %}
+        <h2>oops something went wrong</h2>
+        <p href="{{url_for("home")}}"></p>
+    {% endif %}
+</div>
+<script src="{{url_for('static', filename='javascript/read_item.js')}}"></script>
+{% endblock %}

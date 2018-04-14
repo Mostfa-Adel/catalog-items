@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block required_files %}
+
+    <link href="{{url_for('static',filename='home.css')}}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block main %}
+<nav id="nav">
+    <h3>Categories:</h3>
+    {% if categories_exist != [] %}
+        <ul>
+            {% for category in categories %}
+            <li >
+                <a href="{{url_for('category_items', cid=category.id)}}">
+                    {{category.name}}
+                </a>
+            </li>
+            {%endfor%}
+        </ul>
+    {% endif %}
+</nav>
+<div class="items">
+    <span id="toggle-nav">X</span>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success">
+                    <strong>{{message}}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if is_user %}
+        <ul>
+            <li><a href="{{url_for('create_item')}}">Create Item</a></li>
+        </ul>
+    {% endif %}
+    <h3>Latest Items:</h3>
+    {% if items_exist != [] %}
+        <ul>
+            {% for item in items %}
+                <li >
+                    <a href="{{url_for('read_item',iid=item.id, cid=item.cid)}}">{{item.name}}
+                        <b>({{item.cname}})</b>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h2> no items</h2>
+    {% endif %}
+</div>
+<script src="{{url_for('static',filename='javascript/home.js')}}">
+</script>
+{% endblock %}

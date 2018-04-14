@@ -1,0 +1,88 @@
+    html, body{
+        width:100%;
+        height:100%;
+    }
+    body {
+        margin: 0;
+        background-color: #d5d5d5;
+    }
+    
+    header {
+        color: white;
+        padding: 7px 15px;
+        background-color: #352465;
+        margin: 0;
+        display:flex;
+        flex-flow:column;
+        justify-content:center;
+    }
+    
+    .catalogApp {
+        width:100%;
+        text-align: left;
+    }
+    
+    .catalogApp h1 {
+        text-align:center;
+        font-weight: bold;
+        font-size: 1.8em;
+    }
+    
+    .login {
+        width:100%;
+        display:flex;
+        justify-content:center;
+    }
+
+    .login img{
+        margin: 8px 5px;
+
+    }
+    .login a {
+        display: inline-block;
+        padding: 4px 15px;
+        margin: 8px 5px;
+        background-color: #ff0000;
+        text-decoration: none;
+        color: white
+    }
+    
+    .login a:hover {
+        background-color: black;
+    }
+    
+    main {
+        border: 1px #bbbbbb solid;
+        min-height: Calc(100% - 90px);
+        margin: 15px;
+        background-color: white;
+        border-radius: 20px;
+        color: #352465;
+    }
+    @media screen and (min-width: 500px){
+        header{
+            flex-flow:row;
+        }
+        .catalogApp h1{
+            text-align:left;
+        }
+    }
+    @media screen and (min-width: 500px){
+        .catalogApp{
+            width:35%;
+        }
+        .login{
+            width:65%;
+            justify-content:flex-end;
+        }
+    }
+    @media screen and (min-width: 1000px){
+        main{
+            margin: 15px 150px;
+        }
+        header{
+            padding: 7px 150px;
+        }
+    }
+
+

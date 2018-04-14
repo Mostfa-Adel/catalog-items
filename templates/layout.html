@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    <title>Catalog</title>
+    <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='layout.css')}}" rel="stylesheet">
+    {% block required_files %}{% endblock %}
+</head>
+
+<body>
+
+    <header>
+
+        <div class="catalogApp">
+            <h1>Catalog App</h1>
+        </div>
+
+        <div class="login">
+            {% if is_user %}
+                <img src="{{login_session['picture']}}" width="30px" height="30px" >
+                <a href="#">{{login_session['username']}}</a>
+                <a href="{{url_for('gdissconnect')}}">Logout</a>
+            {% else %}
+                <a href="{{url_for('login')}}">Login</a>
+            {% endif %}
+
+        </div>
+
+    </header>
+    <main>
+        {% block main %} {% endblock %}
+    </main>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block required_files %}
+    <link href="{{url_for('static', filename='category_items.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+<nav id="nav">
+    <h3>Categories:</h3>
+    {% if categories != [] %}
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{{url_for('category_items', cid=category.id)}}"
+                        {% if selected_category != None and selected_category.id == category.id %}
+                            class="selected"
+                        {% endif %}
+                    >
+                        {{category.name}}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</nav>
+<div class="items">
+    <span id="toggle-nav">X</span>
+
+    {% if selected_category != None %}
+        <h3>   {{selected_category.name}} ({{count_items_in_category}} items) :</h3>
+        <ul>
+            {% if items != [] %}
+                {% for item in items %}
+                    <li>
+                        <a href="{{url_for('read_item', cid=item.cid, iid=item.id)}}">
+                            {{item.name}}
+                            <b>({{item.cname}})</b>
+                        </a>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <h2> no items exist for {{ category.name }} category</h2>
+            {% endif %}
+        </ul>
+    {% else %}
+        <h2>selected category doesn't exist</h2>
+    {% endif %}
+</div>
+<script src="{{url_for('static',filename='javascript/home.js')}}">
+</script>
+{% endblock %}

@@ -1,0 +1,23 @@
+main{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#signinButton h1{
+    text-align:center;
+    margin-bottom:100px;
+}
+#signinButton{
+    display:flex;
+    flex-flow:column;
+    align-items:center;
+    border: 2px #bbbbbb solid;
+    width: 300px;
+    height: 300px;
+}
+@media screen and (min-width:700px){
+    #signinButton{
+        width: 400px;
+        height: 300px;
+    }
+}
